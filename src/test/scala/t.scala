@@ -11,10 +11,11 @@ class ShiftRegisterTester( factory: () => ShiftRegisterIfc[UInt]) extends Generi
   it should "compile and execute without expect violations" in {
     chisel3.iotesters.Driver.execute( factory, optionsManager) { c =>
       new PeekPokeTester(c) {
+        val mask = (BigInt(1)<<c.io.a.getWidth)-1
         for { i <- 0 until 1000} {
           poke( c.io.a, i)
           if (i >= c.n) {
-            expect( c.io.z, (i-c.n) & ((BigInt(1)<<32)-1))
+            expect( c.io.z, (i-c.n) & mask)
           }
           step(1)
         }

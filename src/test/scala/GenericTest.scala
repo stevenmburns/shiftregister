@@ -12,7 +12,7 @@ class GenericTest extends FlatSpec with Matchers {
       backendName="treadle"
 //      backendName="verilator"
 //      backendName="vcs"
-//      ,isVerbose=true
+      ,isVerbose=true
 //      ,moreVcsFlags=Seq("-sverilog -notice")
 //      ,vcsCommandEdits="""s/\+vcs\+initreg\+random //"""
     )
